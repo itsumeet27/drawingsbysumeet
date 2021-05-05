@@ -1,9 +1,6 @@
 <?php include('includes/header.php');?>
     
   <div class="container">
-    <div class="p-3">
-      <h2 class="text-center">Gallery</h2>
-    </div>
     <div class="row">
       <?php
         if(isset($_GET['category'])){
@@ -22,12 +19,41 @@
               ?>
               <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 my-2">
                 <div class="p-3" style="box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);">
-                  <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" alt="<?=$files['name'];?>" class="img-fluid img-responsive">
+                  <a href="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" data-caption="<?=$files['name'];?>" >
+                    <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" alt="<?=$files['name'];?>" class="img-fluid img-responsive">
+                  </a>
                 </div>
               </div>
               <?php
             }
           }
+        }else{
+          ?>
+          <div class="row">
+            <?php
+              $fetchFolders = $db->query("SELECT * FROM folders");
+              if(mysqli_num_rows($fetchFolders) > 0){
+                while($folders = mysqli_fetch_assoc($fetchFolders)){
+                  $folder_name = $folders['folder_name'];
+                }
+              }
+              $fetchFiles = $db->query("SELECT fo.folder_name, fi.name FROM folders fo INNER JOIN files fi ON fo.id = fi.folder_id ORDER BY fo.folder_name ASC");
+              if(mysqli_num_rows($fetchFiles) > 0){
+                while($images = mysqli_fetch_assoc($fetchFiles)){
+                ?>
+                  <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 my-2">
+                    <div class="p-3" style="box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);">
+                      <a href="admin/uploads/<?=$images['folder_name'];?>/<?=$images['name'];?>" data-caption="<?=$images['name'];?>" >
+                        <img src="admin/uploads/<?=$images['folder_name'];?>/<?=$images['name'];?>" alt="<?=$images['name'];?>" class="img-fluid img-responsive">
+                      </a>
+                    </div>
+                  </div>
+                <?php
+                }
+              }
+            ?>
+          </div>
+          <?php
         }
       ?>
     </div>
