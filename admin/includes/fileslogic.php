@@ -4,27 +4,25 @@
         if (isset($_POST['save'])) { // if save button on the form is clicked
 
             $folder_name = $_POST['hidden_folder_name'];
-            // name of the uploaded file
-            $filename = $_FILES['myfile']['name'];
+            $extension = array('jpeg','jpg','png','gif','JPG','PNG');
+            foreach ($_FILES['myfile']['name'] as $key => $value) {
 
-            $path = 'uploads/' . $folder_name;
-            // destination of the file on the server
-            $destination = $path . '/' . $filename;
+                $filename = $_FILES['myfile']['name'][$key];
+                $filename_temp = $_FILES['myfile']['tmp_name'][$key];
+                $path = 'uploads/' . $folder_name;
+                echo '<br>';
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-            // get the file extension
-            $extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-            // the physical file on a temporary uploads directory on the server
-            $file = $_FILES['myfile']['tmp_name'];
-            $size = $_FILES['myfile']['size'];
-
-            if (!in_array($extension, ['zip', 'pdf', 'docx', 'xlsx', 'pptx', 'txt', 'doc', 'xls', 'ppt', 'jpg', 'png', 'gif','JPG','PNG'])) {
-                echo "<span class='text-danger p-3'>Your file extension must be .zip, .pdf, .docx, .xlsx, .pptx, .txt, .doc, .xls, .ppt, .jpg, .png, .gif</span>";
-            } elseif ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 10Megabyte
-                echo "<span class='text-danger p-3'>File too large!</span>";
-            } else {
-                // move the uploaded (temporary) file to the specified destination
-                if (move_uploaded_file($file, $destination)) {
+                if(in_array($ext, $extension)){
+                    if(!file_exists($path . '/' . $filename)){
+                        move_uploaded_file($filename_temp, $path . '/' . $filename);
+                        $finalimg = $filename;
+                    }else{
+                        $filename = str_replace('.','-',basename($filename,$ext));
+                        $newfilename = $filename.time().".".$ext;
+                        move_uploaded_file($filename_temp, $path . '/' . $newfilename);
+                        $finalimg = $newfilename;
+                    }
 
                     $sqlFolder = "SELECT * FROM folders WHERE folder_name = '$folder_name'";
                     $runFolder = mysqli_query($db, $sqlFolder);
@@ -34,23 +32,23 @@
                         $filecount = $folder['filecount'];
                         $name = $folder['folder_name'];
                         if($folder_name === $name){
-                            $sql = "INSERT INTO files (user_id, folder_id, name, size, downloads) VALUES ('$user_id','$folder_id','$filename', $size, 0)";
-                            if (mysqli_query($db, $sql)) {
+                            $sql = "INSERT INTO files (user_id, folder_id, name) VALUES ('$user_id','$folder_id','$finalimg')";
+
+                            if ($db->query($sql)) {
                                 echo "<script>alert('File Uploaded Successfully!');</script>";
                                 $newfilecount = $filecount + 1;
                                 $updateCount = "UPDATE folders SET filecount = '$newfilecount' WHERE id = '$folder_id'";
-                                mysqli_query($db, $updateCount);
-                                echo "<script>window.open('repository.php','_self')</script>";
+                                $db->query($updateCount);
+                                echo "<script>window.open('categories.php','_self')</script>";
                             }else {
                                 echo "<script>alert('Failed to upload your file!');</script>";
-                                echo "<script>window.open('repository.php','_self')</script>";
+                                echo "<script>window.open('categories.php','_self')</script>";
                             }
                         }
                     }
                     
-                }else {
-                        echo "<script>alert('Failure in file uploading!');</script>";
-                        echo "<script>window.open('repository.php','_self')</script>";
+                }else{
+                    //display error
                 }
             }
         }

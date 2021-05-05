@@ -93,7 +93,7 @@
 					<div class="modal-body mx-3">
 						<div class="md-form mb-5">						
 							<h3 class="h3-responsive pb-3">Upload here!</h3>
-							<input type="file" name="myfile">
+							<input type="file" name="myfile[]" multiple>
 							<input type="hidden" name="hidden_folder_name" id="hidden_folder_name">					        
 						</div>
 					</div>
