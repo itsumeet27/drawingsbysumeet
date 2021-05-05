@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/mdb.min.css">
     <!-- MDB icon -->
-    <link rel="icon" href="../img/pokemon/pikachu.jpg" type="image/x-icon" />
+    <link rel="icon" href="../img/Piccolo.jpg" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -44,14 +44,15 @@
       <div class="border-right" id="sidebar-wrapper" style="width: 250px;">
         <div class="sidebar-heading">
           <div class="logo text-center pt-0 mt-0">
-            <a href="index.php"><img class="img img-responsive img-fluid" src="../img/Kakashi Hatake - Kid.jpg" style="max-width: 40%"></a>
+            <a href="index.php"><img class="img img-responsive img-fluid" src="../img/Piccolo.jpg" style="max-width: 75%;border-radius:50%"></a>
           </div>
         </div>
-        <div class="list-group list-group-flush">
+        <div class="list-group list-group-flush mt-5">
           <ul class="nav nav-pills flex-column mt-5">
             <li class="nav-item">
               <ul class="submenu nav nav-pills">                
-                <li class="nav-item"><a class="nav-link" href="repository.php">Repository</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link" href="banner-images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Banner Images</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mt-0" href="categories.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Categories</a></li>
               </ul>
             </li>
           </ul>
@@ -63,8 +64,8 @@
       <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background:rgba(0,0,140);">
-          <i class="fas fa-bars" id="menu-toggle" style="color: #555;cursor: pointer;font-size: 18px;background: #fff;border-radius: 50%; padding: 0.75em"></i>
-          <a href="index.php"><span class="pl-4 text-white">Admin | Drawings By Sumeet</span></a>
+          <i class="fas fa-bars" id="menu-toggle" style="color: #555;cursor: pointer;font-size: 18px;background: #fff;border-radius: 50%; padding: 0.7em;margin-left: 0.5em"></i>
+          <a href="index.php"><span class="text-white" style="margin-left: 1em">Admin | Drawings By Sumeet</span></a>
             
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
