@@ -49,6 +49,8 @@
 							<th class="font-weight-bold">Folder Name</th>
 							<th class="font-weight-bold">Total Files</th>
 							<th class="font-weight-bold">Size</th>
+							<th class="font-weight-bold">Feature Image</th>
+							<th class="font-weight-bold">Banner Image</th>
 							<th class="font-weight-bold">Update folder</th>
 							<th class="font-weight-bold">Upload File</th>
 							<th class="font-weight-bold">View Files</th>
@@ -65,6 +67,12 @@
 									<td><i class="fas fa-folder-open" style="font-size:18px"></i> &nbsp;&nbsp;'.$name.'</td>
 									<td>'.(count(scandir($name))-2).'</td>
 									<td>'.get_folder_size($name).'</td>
+									<td>
+										<button type="button" class="btn-floating btn-info feature_image options" name="feature_image" data-name="'.$name.'" title="Feature Image"><i class="far fa-image"></i></button>
+									</td>
+									<td>
+										<button type="button" class="btn-floating btn-secondary banner_image options" name="banner_image" data-name="'.$name.'" title="Banner Image"><i class="far fa-image"></i></button>
+									</td>
 									<td>
 										<button type="button" class="btn-floating btn-warning update options" name="update" data-name="'.$name.'" title="Update"><i class="far fa-edit"></i></button>
 									</td>

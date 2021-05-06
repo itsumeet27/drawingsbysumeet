@@ -105,6 +105,58 @@
 			</div>
 		</div>
 	</div>
+	<!-- Adding feature image -->
+	<div class="modal fade" id="feature_image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h3 class="modal-title w-100" id="change_title">Upload file</h3>
+					<button type="button" class="close" data-mdb-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="" method="post" id="feature_image_form" enctype="multipart/form-data">
+					<div class="modal-body mx-3">
+						<div class="md-form mb-5">						
+							<h3 class="h3-responsive pb-3">Upload here!</h3>
+							<input type="file" name="feature_image">
+							<input type="hidden" name="hidden_feature_folder_name" id="hidden_feature_folder_name">					        
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-danger btn-md" type="button" name="close" data-mdb-dismiss="modal" style="width: 125px!important">Close</button>
+						<button type="submit" name="upload_feature_image" class="btn btn-primary btn-md" style="width: 125px!important">Upload</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Adding banner image -->
+	<div class="modal fade" id="banner_image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h3 class="modal-title w-100" id="change_title">Upload file</h3>
+					<button type="button" class="close" data-mdb-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="" method="post" id="banner_image_form" enctype="multipart/form-data">
+					<div class="modal-body mx-3">
+						<div class="md-form mb-5">						
+							<h3 class="h3-responsive pb-3">Upload here!</h3>
+							<input type="file" name="banner_image">
+							<input type="hidden" name="hidden_banner_folder_name" id="hidden_banner_folder_name">					        
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-danger btn-md" type="button" name="close" data-mdb-dismiss="modal" style="width: 125px!important">Close</button>
+						<button type="submit" name="upload_banner_image" class="btn btn-primary btn-md" style="width: 125px!important">Upload</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- List files in the folder -->
 	<div class="modal fade" id="filelistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -190,6 +242,20 @@
 				var folder_name = $(this).data("name");
 				$('#hidden_folder_name').val(folder_name);
 				$('#uploadModal').modal('show');
+			});
+
+			// Feature image
+			$(document).on('click', '.feature_image', function(){
+				var feature_folder_name = $(this).data("name");
+				$('#hidden_feature_folder_name').val(feature_folder_name);
+				$('#feature_image').modal('show');
+			});
+
+			// Banner image
+			$(document).on('click', '.banner_image', function(){
+				var banner_folder_name = $(this).data("name");
+				$('#hidden_banner_folder_name').val(banner_folder_name);
+				$('#banner_image').modal('show');
 			});
 
 			$('#upload_form').on('submit', function(){
