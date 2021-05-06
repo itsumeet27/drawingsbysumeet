@@ -8,10 +8,13 @@
           if(mysqli_num_rows($fetch_category) > 0){
             while($folders = mysqli_fetch_assoc($fetch_category)){
               $folder_name = $folders['folder_name'];
+              $banner_image = $folders['banner_image'];
             }
           }
           ?>
-          <h4 class="p-3 text-center"><?=$folder_name;?></h4>
+          <div class="banner_image text-center">
+            <img src="admin/uploads/feature_banner_images/<?=$banner_image;?>" class="img-responsive img-fluid" style="width: 50%;">
+          </div>
           <?php
           $fetch_files = $db->query("SELECT fo.folder_name, fi.name FROM folders fo INNER JOIN files fi ON fo.id = fi.folder_id WHERE fi.folder_id = '".$_GET['category']."'");
           if(mysqli_num_rows($fetch_files) > 0){
