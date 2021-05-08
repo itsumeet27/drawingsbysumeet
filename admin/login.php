@@ -53,7 +53,7 @@
 			<div class="col-md-4">
 				<div class="card" style="background-color: rgba(255,255,255,0.9);">
 					<div class="text-center pt-4">
-						<img src="../img/Kakashi Hatake - Kid.jpg" style="width: 150px">
+						<img src="../img/Piccolo.jpg" style="width: 150px">
 					</div>
 					<form action="" method="post" class="needs-validation" novalidate>
 						<div class="card-body">

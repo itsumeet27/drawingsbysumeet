@@ -34,6 +34,13 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
 
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../css/addons/datatables.min.css">  
+    <link rel="stylesheet" href="../css/addons/datatables-select.min.css">  
+    <script src="../js/addons/dataTables.min.js" defer></script> 
+    <script src="../js/addons/dataTables-select.min.js"></script> 
+
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   </head>
 
@@ -51,7 +58,8 @@
           <ul class="nav nav-pills flex-column mt-5">
             <li class="nav-item">
               <ul class="submenu nav nav-pills">                
-                <li class="nav-item" style="width: 100%;"><a class="nav-link" href="banner-images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Banner Images</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link" href="profile.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Profile</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mt-0" href="images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Images</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link mt-0" href="categories.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Categories</a></li>
               </ul>
             </li>
@@ -72,7 +80,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto nav-flex-icons">
+            <ul class="navbar-nav ms-auto nav-flex-icons">
               <?php 
                 if(!isset($_SESSION['username'])){
                   echo "<li class='nav-item'><a href='login.php' class='nav-link white-text' style='border-radius: 0.25em;'>Login</a></li>";
