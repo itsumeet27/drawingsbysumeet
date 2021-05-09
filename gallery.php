@@ -1,7 +1,7 @@
 <?php include('includes/header.php');?>
     
-  <div class="container">
-    <div class="row">
+  <div class="">
+    <div class="row m-0">
       <?php
         if(isset($_GET['category'])){
           $fetch_category = $db->query("SELECT * FROM folders WHERE id = '".$_GET['category']."'");
@@ -12,16 +12,16 @@
             }
           }
           ?>
-          <div class="banner_image text-center">
-            <img src="admin/uploads/feature_banner_images/<?=$banner_image;?>" class="img-responsive img-fluid" style="width: 50%;">
+          <div class="banner_image_gallery text-center">
+            <img src="admin/uploads/feature_banner_images/<?=$banner_image;?>" class="img-responsive img-fluid">
           </div>
           <?php
           $fetch_files = $db->query("SELECT fo.folder_name, fi.name FROM folders fo INNER JOIN files fi ON fo.id = fi.folder_id WHERE fi.folder_id = '".$_GET['category']."'");
           if(mysqli_num_rows($fetch_files) > 0){
             while($files = mysqli_fetch_assoc($fetch_files)){
               ?>
-              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 my-2">
-                <div class="p-3" style="box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 my-3">
+                <div class="p-3 gallery-image-frame">
                   <a href="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" data-caption="<?=$files['name'];?>" >
                     <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" alt="<?=$files['name'];?>" class="img-fluid img-responsive">
                   </a>

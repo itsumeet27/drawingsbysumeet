@@ -64,7 +64,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item p-1">
-                <a class="nav-link font-weight-bold" href="#">Home</a>
+                <a class="nav-link font-weight-bold" href="/">Home</a>
               </li>
               <li class="nav-item p-1">
                 <a class="nav-link font-weight-bold" href="#">About</a>
