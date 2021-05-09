@@ -1,0 +1,95 @@
+*{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.top-navigation{
+  box-shadow: none
+}
+
+.profile{
+  padding: 0 10px;
+}
+
+.profile p{
+  font-size: 14px;
+}
+
+.profile img{
+  width: 50%;
+  border-radius: 50%
+}
+
+.navigation-link ul{
+  list-style: none;
+  padding: 0 15px;
+}
+
+.sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+
+.sidepanel a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #f7f7f7;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #fff;
+  transition: ease-in 0.4s
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.social-links ul li a i{
+  font-size: 24px;
+  color: #fff;
+}
+
+.social-links ul li a i{
+  color: #f7f7f7;
+  transition: all 0.4s;
+}
+
+.bg-image{
+  background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.jpg');
+  height: 100vh;
+}
+
+.category-head h3{
+  text-transform: uppercase;
+  color: #242424;
+  font-weight: 400
+}

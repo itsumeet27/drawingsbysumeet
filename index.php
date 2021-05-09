@@ -1,38 +1,33 @@
-<?php 
-  include('includes/header.php');
-  $sql = "SELECT * FROM about";
-  $result = $db->query($sql);
-  if(mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
-      $id = $row['id'];
-      $name = $row['name'];
-      $short_desc = $row['feature_desc'];
-      $salutation = $row['salutation'];
-      $description = $row['about_desc'];
-      $address = $row['address'];
-      $mobile = $row['mobile'];
-      $email = $row['email'];
-      $image = $row['image'];
-    }
-?>
-    
-  <div class="background p-5" style="background: linear-gradient(0deg, rgba(255,255,255,1) 35%, rgba(0,100,255,1) 100%, rgba(93,93,93,1) 100%);">
-    <div class="container bg-white" style="box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.5)">
-      <div class="row m-0 p-2">
-        <div class="col-md-5 m-0 p-0 text-center">
-          <img src="img/Piccolo.jpg" class="img-fluid img-responsive p-3" style="width: 90%;border-radius: 50%">
-        </div>
-        <div class="col-md-7">
-          <div class="p-5">
-            <h6 class="text-justify h6-responsive" style="font-family: 'Poppins';letter-spacing: 0.25em;font-weight: 600"><?=$salutation;?></h6>
-            <h1 class="text-justify h1-responsive" style="font-family: 'Original Surfer';text-transform: uppercase;"><?=$name;?></h1>
-            <p class="text-justify lead" style="font-weight:400"><?=$short_desc;?></p>
-            <p style="text-align:justify;"><?=nl2br($description);?></p>
-          </div>
+<?php include('includes/header.php'); ?>      
+  
+  <div class="p-5 text-center bg-image">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">DRAWINGS BY SUMEET</h1>
+          <h6 class="mb-3">-by Sumeet Sharma</h6>
         </div>
       </div>
     </div>
   </div>
-  
+  <div class="category-head text-center py-3">
+    <h3 class="font-weight-bold py-3">Categories</h3>
+  </div>
+  <div class="row m-0 container-fluid">
+    <?php 
+      $fetch_category = $db->query("SELECT fo.feature_image, fo.folder_name, fi.id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id WHERE fi.featured = 1");
+      if(mysqli_num_rows($fetch_category) > 0){
+        while($category = mysqli_fetch_assoc($fetch_category)){
+          ?>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 my-3">
+            <div class="card justify-content-center align-items-center h-100">
+              <img src="admin/uploads/<?=$category['folder_name'];?>/<?=$category['name'];?>" class="card-img-top img-fluid" style="width: 100%">
+            </div>
+          </div>
+          <?php
+        }
+      }
+    ?>
+  </div>
 
-<?php } include('includes/footer.php');?>
+<?php include('includes/footer.php');?>
