@@ -27,10 +27,11 @@
 		<div class="table-responsive" style="overflow-x: hidden;">
 			<table class="table table-bordered table-sm table-striped" id="dtBasicExample">
 				<thead class="text-white" style="background: rgb(0,0,140)">
-					<th></th>
-					<th>Image</th>
-					<th>Category Name</th>
-					<th>Featured</th>
+					<th width="50"></th>
+					<th width="300">Image</th>
+					<th width="300">Name</th>
+					<th width="300">Category Name</th>
+					<th width="300">Featured</th>
 				</thead>
 				<tbody>
 					<?php
@@ -49,6 +50,7 @@
 										?>
 									</td>
 									<td><img src="uploads/<?=$images['folder_name'];?>/<?=$images['name'];?>" class="img-fluid img-responsive" style="width: 100px;"></td>
+									<td><?=$images['name'];?></td>
 									<td><?=$images['folder_name'];?></td>
 									<td>
 										<?php
