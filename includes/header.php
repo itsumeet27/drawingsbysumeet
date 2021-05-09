@@ -55,7 +55,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navigation">
         <div class="container">
-          <a class="navbar-brand font-weight-bold p-2" href="#">DRAWINGSBYSUMEET</a>
+          <a class="navbar-brand font-weight-bold p-2" href="./">DRAWINGSBYSUMEET</a>
           <!-- Toggle button -->
           <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -67,7 +67,7 @@
                 <a class="nav-link font-weight-bold" href="/">Home</a>
               </li>
               <li class="nav-item p-1">
-                <a class="nav-link font-weight-bold" href="#">About</a>
+                <a class="nav-link font-weight-bold" href="./#about">About</a>
               </li>
               <!-- Navbar dropdown -->
               <li class="nav-item p-1 dropdown">
@@ -88,7 +88,7 @@
                 </ul>
               </li>
               <li class="nav-item p-1">
-                <a class="nav-link font-weight-bold" href="#">Contact</a>
+                <a class="nav-link font-weight-bold" href="./#contact">Contact</a>
               </li>
             </ul>
           </div>

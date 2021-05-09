@@ -31,52 +31,6 @@ body{
   padding: 0 15px;
 }
 
-.sidepanel  {
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: #222;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 20px;
-}
-
-.sidepanel a {
-  text-decoration: none;
-  font-size: 14px;
-  color: #f7f7f7;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidepanel a:hover {
-  color: #fff;
-  transition: ease-in 0.4s
-}
-
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
 .social-links ul li a i{
   font-size: 24px;
   color: #fff;
@@ -96,7 +50,7 @@ body{
   text-transform: uppercase;
   color: #666;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  font-weight: 400
+  font-weight: 400;
 }
 
 .image-category{
