@@ -89,7 +89,7 @@
             <p class="py-2">&nbsp;<i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;&nbsp;<a href="tel:<?=$mobile;?>"><?=$mobile;?></a></p>
             <p class="py-2"><i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:<?=$email;?>"><?=$email;?></a></p>
 	          <div class="py-2">
-	          	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1883.0897740917926!2d72.86277540804426!3d19.27455664674358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b05a0dd5123b%3A0xf9e5543510f58f4f!2sSector%209%2C%20Shanti%20Nagar%2C%20Mira%20Road%2C%20Mira%20Bhayandar%2C%20Maharashtra%20401107!5e0!3m2!1sen!2sin!4v1620653244591!5m2!1sen!2sin" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	          	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1883.0897740917926!2d72.86277540804426!3d19.27455664674358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b05a0dd5123b%3A0xf9e5543510f58f4f!2sSector%209%2C%20Shanti%20Nagar%2C%20Mira%20Road%2C%20Mira%20Bhayandar%2C%20Maharashtra%20401107!5e0!3m2!1sen!2sin!4v1620653244591!5m2!1sen!2sin" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy"></iframe>
 	          </div>
           </div>
         </div>

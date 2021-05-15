@@ -1,3 +1,34 @@
+  <?php
+    if (isset($_GET['like'])) {
+      $ip = getIp();
+      $category_id = $_GET['like'];
+      $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
+      $row = mysqli_fetch_array($result);
+      $n = $row['likes'];
+
+      $db->query("INSERT INTO likes (ip, category_id) VALUES ('$ip', '$category_id')");
+      $db->query("UPDATE folders SET likes = $n+1 WHERE id='$category_id'");
+
+      echo $n+1;
+      exit();
+    }
+    if (isset($_GET['unlike'])) {
+      $ip = getIp();
+      $category_id = $_GET['unlike'];
+      $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
+      $row = mysqli_fetch_array($result);
+      $n = $row['likes'];
+
+      $db->query("DELETE FROM likes WHERE category_id = '$category_id' AND ip = '$ip'");
+      $db->query("UPDATE folders SET likes = $n-1 WHERE id = '$category_id'");
+      
+      echo $n-1;
+      exit();
+    }
+
+    // Retrieve folders from the database
+    $folders = mysqli_query($con, "SELECT * FROM folders");
+  ?>
   <div class="category-head text-center py-2">
     <h1 class="font-weight-bold py-4">Categories</h1>
     <div class="row m-0 container-fluid">
@@ -11,8 +42,11 @@
                 <img src="admin/uploads/<?=$category['folder_name'];?>/<?=$category['name'];?>" class="card-img-top img-fluid">
                 <div class="middle text-center">
                   <a class="text-center text" href="gallery.php?category=<?=$category['folder_id'];?>">
-                    <img src="admin/uploads/feature_banner_images/<?=$category['banner_image'];?>" class="img-fluid banner_image">
-                  </a>
+                    <img src="admin/uploads/feature_banner_images/<?=$category['banner_image'];?>" class="img-fluid banner_image"></a>
+                </div>
+                <div class="card-footer text-center">
+                  <a href="index.php?like=<?=$category['folder_id'];?>" class="btn btn-floating btn-success btn-lg mx-1"><i class="fas fa-thumbs-up"></i></a>
+                  <a href="index.php?unlike=<?=$category['folder_id'];?>" class="btn btn-floating btn-danger btn-lg mx-1"><i class="fas fa-thumbs-down"></i></a>
                 </div>
               </div>
             </div>
