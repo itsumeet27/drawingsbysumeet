@@ -8,9 +8,6 @@
 
       $db->query("INSERT INTO likes (ip, category_id) VALUES ('$ip', '$category_id')");
       $db->query("UPDATE folders SET likes = $n+1 WHERE id='$category_id'");
-
-      echo $n+1;
-      exit();
     }
     if (isset($_GET['unlike'])) {
       $ip = getIp();
@@ -21,13 +18,7 @@
 
       $db->query("DELETE FROM likes WHERE category_id = '$category_id' AND ip = '$ip'");
       $db->query("UPDATE folders SET likes = $n-1 WHERE id = '$category_id'");
-      
-      echo $n-1;
-      exit();
     }
-
-    // Retrieve folders from the database
-    $folders = mysqli_query($con, "SELECT * FROM folders");
   ?>
   <div class="category-head text-center py-2">
     <h1 class="font-weight-bold py-4">Categories</h1>
