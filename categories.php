@@ -12,7 +12,7 @@
       $update_like = $db->query("UPDATE folders SET likes = $n+1 WHERE id='$category_id'");
 
       if($insert_like == 1 || $update_like == 1){
-        echo "<script>window.open('index.php#categories','_self')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
       }
     }
 
@@ -26,8 +26,10 @@
 
       if($row['likes'] <= 0){
         $db->query("UPDATE folders SET likes = 0 WHERE id = '$category_id'");
+        echo "<script>window.open('index.php','_self')</script>";
       }else{
         $db->query("UPDATE folders SET likes = $n-1 WHERE id = '$category_id'");
+        echo "<script>window.open('index.php','_self')</script>";
       }
 
       // Delete the row from likes table

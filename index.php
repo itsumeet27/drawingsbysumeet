@@ -14,6 +14,9 @@
   <!-- About -->
   <?php include('about.php');?>
 
+  <!-- Recently Added -->
+  <?php include('recently-added.php');?>
+
   <!-- Categories -->
   <?php include('categories.php');?>
 

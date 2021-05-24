@@ -1,0 +1,69 @@
+<?php
+  // Like the images
+    if (isset($_GET['like'])) {
+      $ip = getIp();
+      $image_id = $_GET['like'];
+      $result = $db->query("SELECT * FROM files WHERE id = '$image_id'");
+      $row = mysqli_fetch_array($result);
+      $n = $row['likes'];
+
+      $insert_like = $db->query("INSERT INTO likes (ip, image_id) VALUES ('$ip', '$image_id')");
+      $update_like = $db->query("UPDATE files SET likes = $n+1 WHERE id='$image_id'");
+
+      if($insert_like == 1 || $update_like == 1){
+        echo "<script>window.open('index.php','_self')</script>";
+      }
+    }
+
+    // Unlike the images
+    if (isset($_GET['unlike'])) {
+      $ip = getIp();
+      $image_id = $_GET['unlike'];
+      $result = $db->query("SELECT * FROM files WHERE id = '$image_id'");
+      $row = mysqli_fetch_array($result);
+      $n = $row['likes'];
+
+      if($row['likes'] <= 0){
+        $db->query("UPDATE files SET likes = 0 WHERE id = '$image_id'");
+        echo "<script>window.open('index.php','_self')</script>";
+      }else{
+        $db->query("UPDATE files SET likes = $n-1 WHERE id = '$image_id'");
+        echo "<script>window.open('index.php','_self')</script>";
+      }
+
+      // Delete the row from likes table
+      $db->query("DELETE FROM likes WHERE image_id = '$image_id' AND ip = '$ip'");
+    }
+?>
+  <div class="category-head text-center py-2">
+    <h1 class="font-weight-bold py-4">Recently Added</h1>
+    <div class="row m-0 container-fluid">
+      <?php 
+        $fetch_files = $db->query("SELECT fo.feature_image, fi.likes, fo.banner_image, fo.folder_name, fi.folder_id, fi.id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id ORDER BY fi.id DESC LIMIT 6");
+        if(mysqli_num_rows($fetch_files) > 0){
+          while($files = mysqli_fetch_assoc($fetch_files)){
+            ?>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 my-3">
+              <div class="card justify-content-center align-items-center h-100 image-files">
+                <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" class="card-img-top img-fluid">
+                <div class="middle text-center">
+                  <a class="text-center text" href="gallery.php?files=<?=$files['folder_id'];?>">
+                    <img src="admin/uploads/feature_banner_images/<?=$files['banner_image'];?>" class="img-fluid banner_image"></a>
+                </div>
+                <div class="card-footer text-center">
+                  <a href="index.php?like=<?=$files['id'];?>" class="btn btn-floating btn-success btn-lg mx-1 like" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-up"></i></a>
+                  <a href="index.php?unlike=<?=$files['id'];?>" class="btn btn-floating btn-danger btn-lg mx-1 unlike" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-down"></i></a>
+                </div>
+                <?php if($files['likes'] <= 0): ?>
+                  <span class="likes_count text-danger">0 likes</span>
+                <?php else: ?>
+                  <span class="likes_count text-primary"><?=$files['likes'];?> likes</span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <?php
+          }
+        }
+      ?>
+    </div>
+  </div>
