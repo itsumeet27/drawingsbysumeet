@@ -15,10 +15,10 @@
       }
     }
 
-    // Unlike the images
-    if (isset($_GET['unlike'])) {
+    // dislike the images
+    if (isset($_GET['dislike'])) {
       $ip = getIp();
-      $image_id = $_GET['unlike'];
+      $image_id = $_GET['dislike'];
       $result = $db->query("SELECT * FROM files WHERE id = '$image_id'");
       $row = mysqli_fetch_array($result);
       $n = $row['likes'];
@@ -44,21 +44,27 @@
           while($files = mysqli_fetch_assoc($fetch_files)){
             ?>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 my-3">
-              <div class="card justify-content-center align-items-center h-100 image-files">
-                <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" class="card-img-top img-fluid">
-                <div class="middle text-center">
-                  <a class="text-center text" href="gallery.php?files=<?=$files['folder_id'];?>">
-                    <img src="admin/uploads/feature_banner_images/<?=$files['banner_image'];?>" class="img-fluid banner_image"></a>
+              <div class="card justify-content-center align-items-center h-100 image-category">
+                <div class="card-body">
+                  <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" class="card-img-top img-fluid">
+                  <div class="middle text-center">
+                    <a class="text-center text" href="gallery.php?category=<?=$files['folder_id'];?>">
+                      <img src="admin/uploads/feature_banner_images/<?=$files['banner_image'];?>" alt="<?=$files['name'];?>" class="img-fluid banner_image"></a>
+                  </div>
+                </div>                
+                <div class="card-footer py-2" style="width: 100%">
+                  <div style="float:left">
+                    <a href="index.php?like=<?=$files['id'];?>" class="btn btn-floating btn-success btn-lg mx-1 like" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-up"></i></a>
+                    <a href="index.php?dislike=<?=$files['id'];?>" class="btn btn-floating btn-danger btn-lg mx-1 dislike" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-down"></i></a>
+                  </div>
+                  <div style="float: right;vertical-align: middle;">
+                    <?php if($files['likes'] <= 0): ?>
+                      <span class="badge bg-danger likes_count" style="font-size: 16px;margin-top:0.5em">0 likes</span>
+                    <?php else: ?>
+                      <span class="badge bg-primary likes_count" style="font-size: 16px;margin-top:0.5em"><?=$files['likes'];?> likes</span>
+                    <?php endif; ?>
+                  </div>
                 </div>
-                <div class="card-footer text-center">
-                  <a href="index.php?like=<?=$files['id'];?>" class="btn btn-floating btn-success btn-lg mx-1 like" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-up"></i></a>
-                  <a href="index.php?unlike=<?=$files['id'];?>" class="btn btn-floating btn-danger btn-lg mx-1 unlike" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-down"></i></a>
-                </div>
-                <?php if($files['likes'] <= 0): ?>
-                  <span class="likes_count text-danger">0 likes</span>
-                <?php else: ?>
-                  <span class="likes_count text-primary"><?=$files['likes'];?> likes</span>
-                <?php endif; ?>
               </div>
             </div>
             <?php
