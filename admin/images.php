@@ -31,11 +31,12 @@
 					<th width="300">Image</th>
 					<th width="300">Name</th>
 					<th width="300">Category Name</th>
+					<th width="300">Likes</th>
 					<th width="300">Featured</th>
 				</thead>
 				<tbody>
 					<?php
-						$fetch_images = $db->query("SELECT fi.id, fi.name, fo.folder_name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id");
+						$fetch_images = $db->query("SELECT fi.id, fi.name, fo.folder_name, fi.likes, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id");
 						if(mysqli_num_rows($fetch_images) > 0){
 							while($images = mysqli_fetch_assoc($fetch_images)){
 								?>
@@ -52,6 +53,7 @@
 									<td><img src="uploads/<?=$images['folder_name'];?>/<?=$images['name'];?>" class="img-fluid img-responsive" style="width: 100px;"></td>
 									<td><?=$images['name'];?></td>
 									<td><?=$images['folder_name'];?></td>
+									<td><?=$images['likes'];?></td>
 									<td>
 										<?php
 											if($images['featured'] == 0){
@@ -72,7 +74,7 @@
 					  $('#dtBasicExample').DataTable();
 					  $('.dataTables_length').addClass('bs-select');
 					});
-        </script>
+        		</script>
 			</table>
 		</div>
 	</div>

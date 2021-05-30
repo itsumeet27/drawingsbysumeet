@@ -49,6 +49,7 @@
 							<th class="font-weight-bold">Folder Name</th>
 							<th class="font-weight-bold">Total Files</th>
 							<th class="font-weight-bold">Size</th>
+							<th class="font-weight-bold">Likes</th>
 							<th class="font-weight-bold">Feature Image</th>
 							<th class="font-weight-bold">Banner Image</th>
 							<th class="font-weight-bold">Update folder</th>
@@ -61,12 +62,15 @@
 
 				if(count($folder) > 0){
 					foreach($folder as $name){
+						$fetch_folder = $db->query("SELECT * FROM folders WHERE folder_name = '".$name."'");
+					    $list_folder = mysqli_fetch_assoc($fetch_folder);
 						$output .= '
 							<tbody>
 								<tr>
 									<td><i class="fas fa-folder-open" style="font-size:18px"></i> &nbsp;&nbsp;'.$name.'</td>
 									<td>'.(count(scandir($name))-2).'</td>
 									<td>'.get_folder_size($name).'</td>
+									<td>'.$list_folder['likes'].'</td>
 									<td>
 										<button type="button" class="btn-floating btn-info feature_image options" name="feature_image" data-name="'.$name.'" title="Feature Image"><i class="far fa-image"></i></button>
 									</td>
