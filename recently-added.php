@@ -39,11 +39,11 @@
     <h1 class="font-weight-bold py-4">Recently Added</h1>
     <div class="row m-0 container-fluid">
       <?php 
-        $fetch_files = $db->query("SELECT fo.feature_image, fi.likes, fo.banner_image, fo.folder_name, fi.folder_id, fi.id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id ORDER BY fi.id DESC LIMIT 6");
+        $fetch_files = $db->query("SELECT fo.feature_image, fi.likes, fo.banner_image, fo.folder_name, fi.folder_id, fi.id AS file_id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id ORDER BY file_id DESC LIMIT 4");
         if(mysqli_num_rows($fetch_files) > 0){
           while($files = mysqli_fetch_assoc($fetch_files)){
             ?>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 my-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 my-3">
               <div class="card justify-content-center align-items-center h-100 image-category">
                 <div class="card-body">
                   <img src="admin/uploads/<?=$files['folder_name'];?>/<?=$files['name'];?>" class="card-img-top img-fluid">
