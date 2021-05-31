@@ -169,7 +169,7 @@
 		</div>
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div class="row m-0">
-				<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="col-md-2 col-sm-12 col-xs-12">
 					<ul style="list-style: none;">
 						<?php
 							$list_category = $db->query("SELECT * FROM folders WHERE filecount > 0");
@@ -183,7 +183,7 @@
 						?>
 					</ul>
 				</div>
-				<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="col-md-10 col-sm-12 col-xs-12">
 					<div id="image_category" style="width: 100%; height: 600px;"></div>
 				</div>
 			</div>
