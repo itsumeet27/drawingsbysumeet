@@ -8,6 +8,11 @@
 	  $category_likes = $db->query("SELECT * FROM folders WHERE likes > 0");
 
 	  $category_images = $db->query("SELECT * FROM folders WHERE filecount > 0");
+
+	  $image_likes = $db->query("SELECT fo.feature_image, fi.likes, fo.banner_image, fo.folder_name, fi.folder_id, fi.id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id");
+
+	  $image_category = $db->query("SELECT fi.name, fo.folder_name, fi.likes, fi.id AS file_id FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id WHERE fi.folder_id = '".$_GET["category"]."'");	
+	  
 ?>
 
 	<style type="text/css">
@@ -20,8 +25,11 @@
 	<!-- Google Charts -->
 	<script type="text/javascript">
 		google.charts.load('current', {'packages':['corechart','bar']});
+
 		google.charts.setOnLoadCallback(drawCategoryLikes);
 		google.charts.setOnLoadCallback(drawCategoryImages);
+		google.charts.setOnLoadCallback(drawImageLikes);
+  	google.charts.setOnLoadCallback(drawImageCategory);
 
 
 		// Category Likes
@@ -40,7 +48,7 @@
 
       var options = {
         title: 'Category Likes',
-        is3D: true
+        pieHole: 0.4
       };
 
       var chart = new google.visualization.PieChart(document.getElementById('category_likes'));
@@ -70,6 +78,51 @@
       chart.draw(data, options);
   	}
 
+  	// Image Likes
+  	function drawImageLikes() {
+      var data = google.visualization.arrayToDataTable([
+      	['Image', 'No. of likes'],
+      	<?php
+		   			if(mysqli_num_rows($image_likes) > 0){
+						while($imageLikes = mysqli_fetch_assoc($image_likes)){
+							echo "['".$imageLikes['name']."', ".$imageLikes['likes']."],";
+						}
+					}
+
+				?>
+      ]);
+
+      var options = {
+        title: 'Image Likes',
+        pieHole: 0.4
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('image_likes'));
+      chart.draw(data, options);
+  	}
+
+  	// Image Category Likes
+  	function drawImageCategory() {
+      var data = google.visualization.arrayToDataTable([
+      	['Image', 'No. of likes'],
+      	<?php
+		   			if(mysqli_num_rows($image_category) > 0){
+						while($imageCategory = mysqli_fetch_assoc($image_category)){
+							echo "['".$imageCategory['name']."', ".$imageCategory['likes']."],";
+						}
+					}
+
+				?>
+      ]);
+
+      var options = {
+        title: 'Image Likes',
+        pieHole: 0.4
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('image_category'));
+      chart.draw(data, options);
+	  }
 	</script>
 
 	<!-- CARD CATEGORIES -->
@@ -107,6 +160,33 @@
 		</div>
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div id="category_images" style="width: 100%; height: 600px;"></div>
+		</div>
+	</div>
+
+	<div class="row mt-2">
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div id="image_likes" style="width: 100%; height: 600px;"></div>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div class="row m-0">
+				<div class="col-md-3 col-sm-12 col-xs-12">
+					<ul style="list-style: none;">
+						<?php
+							$list_category = $db->query("SELECT * FROM folders WHERE filecount > 0");
+							if(mysqli_num_rows($list_category) > 0){
+								while($categories = mysqli_fetch_assoc($list_category)){
+									?>
+									<li class="nav-item p-0"><a href="index.php?category=<?=$categories['id'];?>" class="nav-link" style="font-size: 14px"><?=$categories['folder_name'];?></a></li>
+									<?php
+								}
+							}
+						?>
+					</ul>
+				</div>
+				<div class="col-md-9 col-sm-12 col-xs-12">
+					<div id="image_category" style="width: 100%; height: 600px;"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 
