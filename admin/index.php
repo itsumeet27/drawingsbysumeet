@@ -11,7 +11,11 @@
 
 	  $image_likes = $db->query("SELECT fo.feature_image, fi.likes, fo.banner_image, fo.folder_name, fi.folder_id, fi.id, fi.name, fi.featured FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id");
 
-	  $image_category = $db->query("SELECT fi.name, fo.folder_name, fi.likes, fi.id AS file_id FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id WHERE fi.folder_id = '".$_GET["category"]."'");	
+	  $image_category = $db->query("SELECT fi.name, fo.folder_name, fi.likes, fi.id AS file_id FROM files fi INNER JOIN folders fo ON fi.folder_id = fo.id WHERE fi.folder_id = '".isset($_GET["category"])."'");	
+
+	  $ip_image_likes = $db->query("SELECT fi.likes, li.image_id, li.ip FROM files fi INNER JOIN likes li ON fi.id = li.image_id");
+
+	  $ip_category_likes = $db->query("SELECT fo.likes, li.category_id, li.ip FROM folders fo INNER JOIN likes li ON fo.id = li.category_id");
 	  
 ?>
 
@@ -30,7 +34,8 @@
 		google.charts.setOnLoadCallback(drawCategoryImages);
 		google.charts.setOnLoadCallback(drawImageLikes);
   	google.charts.setOnLoadCallback(drawImageCategory);
-
+  	google.charts.setOnLoadCallback(drawIpImageLikes);
+  	google.charts.setOnLoadCallback(drawIpCategoryLikes);
 
 		// Category Likes
 		function drawCategoryLikes() {
@@ -123,6 +128,52 @@
       var chart = new google.visualization.PieChart(document.getElementById('image_category'));
       chart.draw(data, options);
 	  }
+
+	  // Ip based likes histogram
+	  function drawIpImageLikes() {
+      var data = google.visualization.arrayToDataTable([
+        ['IP Adress', 'likes'],
+        <?php
+	   			if(mysqli_num_rows($ip_image_likes) > 0){
+						while($ipImageLikes = mysqli_fetch_assoc($ip_image_likes)){
+							echo "['".$ipImageLikes['ip']."', ".$ipImageLikes['likes']."],";
+						}
+					}
+
+				?>
+      ]);
+
+      var options = {
+        title: 'Users like based on IP',
+        legend: { position: 'none' },
+      };
+
+      var chart = new google.visualization.Histogram(document.getElementById('ip_image_likes'));
+      chart.draw(data, options);
+    }
+	
+    // Ip based likes histogram
+	  function drawIpCategoryLikes() {
+	    var data = google.visualization.arrayToDataTable([
+	      ['IP Adress', 'likes'],
+	      <?php
+	   			if(mysqli_num_rows($ip_category_likes) > 0){
+						while($ipCategoryLikes = mysqli_fetch_assoc($ip_category_likes)){
+							echo "['".$ipCategoryLikes['ip']."', ".$ipCategoryLikes['likes']."],";
+						}
+					}
+
+				?>
+	    ]);
+
+	    var options = {
+	      title: 'Categories like based on IP',
+	      legend: { position: 'none' },
+	    };
+
+	    var chart = new google.visualization.Histogram(document.getElementById('ip_category_likes'));
+	    chart.draw(data, options);
+	  }
 	</script>
 
 	<!-- CARD CATEGORIES -->
@@ -153,20 +204,23 @@
 		?>
 	</div>
 
-	<!-- LIKED CATEGORIES and NO. OF IMAGES -->
 	<div class="row mt-2">
+		<!-- Category likes -->
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div id="category_likes" style="width: 100%; height: 600px;"></div>
 		</div>
+		<!-- Total No. of Images -->
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div id="category_images" style="width: 100%; height: 600px;"></div>
 		</div>
 	</div>
 
 	<div class="row mt-2">
+		<!-- Image likes -->
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div id="image_likes" style="width: 100%; height: 600px;"></div>
 		</div>
+		<!-- Image likes based categories -->
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div class="row m-0">
 				<div class="col-md-2 col-sm-12 col-xs-12">
@@ -190,5 +244,15 @@
 		</div>
 	</div>
 
+	<div class="row mt-2">
+		<!-- IP based image likes -->
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div id="ip_image_likes" style="width: 100%; height: 600px;"></div>
+		</div>
+		<!-- IP based category likes -->
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div id="ip_category_likes" style="width: 100%; height: 600px;"></div>
+		</div>
+	</div>
 
 <?php include ('includes/footer.php'); } ?>

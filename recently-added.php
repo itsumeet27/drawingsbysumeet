@@ -54,8 +54,8 @@
                 </div>                
                 <div class="card-footer py-2" style="width: 100%">
                   <div style="float:left">
-                    <a href="index.php?like=<?=$files['id'];?>" class="btn btn-floating btn-success btn-lg mx-1 like" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-up"></i></a>
-                    <a href="index.php?dislike=<?=$files['id'];?>" class="btn btn-floating btn-danger btn-lg mx-1 dislike" data-id="<?=$files['id'];?>"><i class="fas fa-thumbs-down"></i></a>
+                    <a href="index.php?like=<?=$files['file_id'];?>" class="btn btn-floating btn-success btn-lg mx-1 like" data-id="<?=$files['file_id'];?>"><i class="fas fa-thumbs-up"></i></a>
+                    <a href="index.php?dislike=<?=$files['file_id'];?>" class="btn btn-floating btn-danger btn-lg mx-1 dislike" data-id="<?=$files['file_id'];?>"><i class="fas fa-thumbs-down"></i></a>
                   </div>
                   <div style="float: right;vertical-align: middle;">
                     <?php if($files['likes'] <= 0): ?>
