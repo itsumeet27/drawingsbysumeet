@@ -1,14 +1,7 @@
-<?php include('includes/header.php'); ?>      
-  
-  <div class="p-5 text-center bg-image">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">DRAWINGS BY SUMEET</h1>
-          <h6 class="mb-3">-by Sumeet Sharma</h6>
-        </div>
-      </div>
-    </div>
+<?php include('includes/header.php'); ?>    
+
+  <div class="embed-video justify-content-center align-items-center">  
+    <iframe src="https://www.youtube.com/embed/HQIQxuURZ4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height: 100vh;"></iframe>
   </div>
 
   <!-- About -->
