@@ -1,42 +1,41 @@
-  <?php
+<?php
+  // like the categories
+  if (isset($_GET['like'])) {
+    $ip = getIp();
+    $category_id = $_GET['like'];
+    $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
+    $row = mysqli_fetch_array($result);
+    $n = $row['likes'];
 
-    // Like the categories
-    if (isset($_GET['like'])) {
-      $ip = getIp();
-      $category_id = $_GET['like'];
-      $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
-      $row = mysqli_fetch_array($result);
-      $n = $row['likes'];
+    $insert_like = $db->query("INSERT INTO likes (ip, category_id) VALUES ('$ip', '$category_id')");
+    $update_like = $db->query("UPDATE folders SET likes = $n+1 WHERE id='$category_id'");
 
-      $insert_like = $db->query("INSERT INTO likes (ip, category_id) VALUES ('$ip', '$category_id')");
-      $update_like = $db->query("UPDATE folders SET likes = $n+1 WHERE id='$category_id'");
+    if($insert_like == 1 || $update_like == 1){
+      echo "<script>window.open('index.php','_self')</script>";
+    }
+  }
 
-      if($insert_like == 1 || $update_like == 1){
-        echo "<script>window.open('index.php','_self')</script>";
-      }
+  // dislike the categories
+  if (isset($_GET['dislike'])) {
+    $ip = getIp();
+    $category_id = $_GET['dislike'];
+    $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
+    $row = mysqli_fetch_array($result);
+    $n = $row['likes'];
+
+    if($row['likes'] <= 0){
+      $db->query("UPDATE folders SET likes = 0 WHERE id = '$category_id'");
+      echo "<script>window.open('index.php','_self')</script>";
+    }else{
+      $db->query("UPDATE folders SET likes = $n-1 WHERE id = '$category_id'");
+      echo "<script>window.open('index.php','_self')</script>";
     }
 
-    // dislike the categories
-    if (isset($_GET['dislike'])) {
-      $ip = getIp();
-      $category_id = $_GET['dislike'];
-      $result = $db->query("SELECT * FROM folders WHERE id = '$category_id'");
-      $row = mysqli_fetch_array($result);
-      $n = $row['likes'];
-
-      if($row['likes'] <= 0){
-        $db->query("UPDATE folders SET likes = 0 WHERE id = '$category_id'");
-        echo "<script>window.open('index.php','_self')</script>";
-      }else{
-        $db->query("UPDATE folders SET likes = $n-1 WHERE id = '$category_id'");
-        echo "<script>window.open('index.php','_self')</script>";
-      }
-
-      // Delete the row from likes table
-      $db->query("DELETE FROM likes WHERE category_id = '$category_id' AND ip = '$ip'");
-    }
-  ?>
-  <div class="category-head text-center py-2">
+    // Delete the row from likes table
+    $db->query("DELETE FROM likes WHERE category_id = '$category_id' AND ip = '$ip'");
+  }
+?>
+  <div class="category-head text-center py-2" id="category">
     <h1 class="font-weight-bold py-4">Categories</h1>
     <div class="row m-0 container-fluid">
       <?php 
