@@ -50,19 +50,17 @@
           <ul class="nav nav-pills flex-column mt-5">
             <li class="nav-item">
               <ul class="submenu nav nav-pills">                
-                <li class="nav-item" style="width: 100%;"><a class="nav-link" href="profile.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Profile</a></li>
-                <li class="nav-item" style="width: 100%;"><a class="nav-link mt-0" href="images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Images</a></li>
-                <li class="nav-item" style="width: 100%;"><a class="nav-link mt-0" href="categories.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Categories</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0" href="profile.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Profile</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0 mt-0" href="images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Images</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0 mt-0" href="categories.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Categories</a></li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
-      <!-- /#sidebar-wrapper -->
 
       <!-- Page Content -->
       <div id="page-content-wrapper">
-
         <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background:rgba(0,0,140);">
           <i class="fas fa-bars" id="menu-toggle" style="color: #555;cursor: pointer;font-size: 18px;background: #fff;border-radius: 50%; padding: 0.7em;margin-left: 0.5em"></i>
           <a href="index.php"><span class="text-white" style="margin-left: 1em">Admin | Drawings By Sumeet</span></a>

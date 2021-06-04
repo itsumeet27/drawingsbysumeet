@@ -21,8 +21,7 @@
 			width: 50px!important;
 		}
 	</style>
-	<h2 class="h2-responsive text-center p-3 title">List of all images</h2>
-
+	<h3 class="h3-responsive text-center p-3 title">LIST OF IMAGES</h3>
 	<div class="container-fluid">
 		<div class="table-responsive" style="overflow-x: hidden;">
 			<table class="table table-bordered table-sm table-striped" id="dtBasicExample">

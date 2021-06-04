@@ -5,10 +5,8 @@
 	}else{
 		include('includes/header.php');
 		include('includes/fileslogic.php');
-
 		
 	    // Fetch data from database
-
 	    $fetch = "SELECT * FROM files";
 	    $result = mysqli_query($db, $fetch);
 
@@ -49,7 +47,7 @@
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<!-- Folder based file upload -->
-	<h2 class="h2-responsive text-center p-3 title">List of all categories</h2>
+	<h3 class="h3-responsive text-center p-3 title">LIST OF CATEGORIES</h3>
 	<div class="pl-2">
 		<button type="button" class="btn-floating options btn-primary" name="create_folder" id="create_folder" style="margin: 0 0.5em" title="Create Folder"><i class="fas fa-folder-plus"></i></button>
 	</div>

@@ -21,10 +21,10 @@
     while($social = mysqli_fetch_assoc($result_social)){
       $facebook = $social['facebook'];
       $instagram = $social['instagram'];
-      $linkedin = $social['linkedin'];
-      $twitter = $social['twitter'];
+      $deviantart = $social['deviantart'];
+      $tumblr = $social['tumblr'];
       $pinterest = $social['pinterest'];
-      $github = $social['github'];
+      $youtube = $social['youtube'];
       $behance = $social['behance'];
     }
   }
@@ -100,9 +100,6 @@
                   ?>
                 </ul>
               </li>
-              <li class="nav-item p-1">
-                <a class="nav-link font-weight-bold" href="./#contact">Contact</a>
-              </li>
             </ul>
             <ul class="navbar-nav d-flex flex-row me-1 social-links">
               <!-- Icons -->
@@ -112,21 +109,7 @@
                   <i class="fab fa-facebook me-1"></i>
                 </a>
               </li>
-              <?php } ?>
-              <?php if($linkedin != ''){ ?>
-              <li class="nav-item me-2">
-                <a class="nav-link" href="https://linkedin.com/in/<?=$linkedin;?>" target="_blank">
-                  <i class="fab fa-linkedin me-1"></i>
-                </a>
-              </li>
-              <?php } ?>
-              <?php if($twitter != ''){ ?>
-              <li class="nav-item me-2">
-                <a class="nav-link" href="https://twitter.com/<?=$twitter;?>" target="_blank">
-                  <i class="fab fa-twitter me-1"></i>
-                </a>
-              </li>
-              <?php } ?>
+              <?php } ?>              
               <?php if($instagram != ''){ ?>
               <li class="nav-item me-2">
                 <a class="nav-link" href="https://instagram.com/<?=$instagram;?>" target="_blank">
@@ -134,10 +117,24 @@
                 </a>
               </li>
               <?php } ?>
-              <?php if($github != ''){ ?>
+              <?php if($youtube != ''){ ?>
               <li class="nav-item me-2">
-                <a class="nav-link" href="https://github.com/<?=$github;?>" target="_blank">
-                  <i class="fab fa-github me-1"></i>
+                <a class="nav-link" href="https://youtube.com/channel/<?=$youtube;?>" target="_blank">
+                  <i class="fab fa-youtube me-1"></i>
+                </a>
+              </li>
+              <?php } ?>
+              <?php if($deviantart != ''){ ?>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="https://deviantart.com/<?=$deviantart;?>" target="_blank">
+                  <i class="fab fa-deviantart me-1"></i>
+                </a>
+              </li>
+              <?php } ?>
+              <?php if($tumblr != ''){ ?>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="https://<?=$tumblr;?>.tumblr.com/" target="_blank">
+                  <i class="fab fa-tumblr me-1"></i>
                 </a>
               </li>
               <?php } ?>
