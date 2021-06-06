@@ -53,6 +53,7 @@
                 <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0" href="profile.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Profile</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0 mt-0" href="images.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Images</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0 mt-0" href="categories.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Categories</a></li>
+                <li class="nav-item" style="width: 100%;"><a class="nav-link mx-0 mt-0" href="videos.php" style="width: 100%;font-size: 14px;font-weight: 500;color: #fff;background:rgba(0,0,140);">Videos</a></li>
               </ul>
             </li>
           </ul>

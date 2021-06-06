@@ -12,7 +12,4 @@
   <!-- Categories -->
   <?php include('categories.php');?>
 
-  <!-- Contact -->
-  <?php include('contact.php');?>
-
 <?php include('includes/footer.php');?>
