@@ -100,6 +100,9 @@
                   ?>
                 </ul>
               </li>
+              <li class="nav-item p-1">
+                <a class="nav-link font-weight-bold" href="./videos.php">Videos</a>
+              </li>
             </ul>
             <ul class="navbar-nav d-flex flex-row me-1 social-links">
               <!-- Icons -->
